@@ -1,4 +1,4 @@
-package animals;
+package felini;
 
 
 public class MainFelini {
