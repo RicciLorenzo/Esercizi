@@ -23,7 +23,7 @@ public class pappagallo {
 	}
 	
 	public void possoComprarlo(int euro) {
-		System.out.println("Posso comprarlo con "+euro+"euro?");
+		System.out.println("Posso comprarlo con "+euro+" euro?");
 		if(euro>=this.costo)
 			System.out.println("Si");
 		else
