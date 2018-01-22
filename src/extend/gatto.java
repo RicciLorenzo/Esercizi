@@ -8,7 +8,7 @@ public class gatto {
 	
 	
 	public void printNome() {
-		System.out.println("Nome del gatto: "+this.nome);
+		System.out.println("Nome del gattolol: "+this.nome);
 	}
 	
 	public void printRazza() {
