@@ -8,7 +8,7 @@ public class Tigre extends Felino {
 		this.nome = nome;
 	}
 
-	public boolean èDomestico() {
+	public boolean Domestico() {
 		return false;
 	}
 

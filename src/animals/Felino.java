@@ -2,7 +2,7 @@ package animals;
 
 
 public class Felino {
-	public boolean èDomestico() {
+	public boolean Domestico() {
 		return true;
 	}
 
@@ -15,6 +15,6 @@ public class Felino {
 	}
 
 	public final boolean possoComprarloCon(int euro) {
-		return èDomestico() && costo() <= euro;
+		return Domestico() && costo() <= euro;
 	}
 }
