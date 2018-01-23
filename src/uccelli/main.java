@@ -17,24 +17,24 @@ public class main {
 		
 		System.out.println("-------------");
 		
-		roseicollis prova = new roseicollis("tom",3);
-		System.out.println(prova.printNome());
+		roseicollis rosei = new roseicollis("tom",3);
+		System.out.println(rosei.printNome());
 		euro=0;
 		System.out.println("Inserisci il tuo budget:");
 		euro=scan.nextInt();
-		prova.possoComprarlo(euro);
-		System.out.println(prova.provenienza());
+		rosei.possoComprarlo(euro);
+		System.out.println(rosei.provenienza());
 		
 		System.out.println("-------------");
 		
-		opalino test = new opalino("jim",1);
-		System.out.println(test.printNome());
-		System.out.println(test.mutazione());
+		opalino opal = new opalino("jim",1);
+		System.out.println(opal.printNome());
+		System.out.println(opal.mutazione());
 		euro=0;
 		System.out.println("Inserisci il tuo budget:");
 		euro=scan.nextInt();
-		test.possoComprarlo(euro);
-		System.out.println(test.provenienza());
+		opal.possoComprarlo(euro);
+		System.out.println(opal.provenienza());
 		
 		
 	}
