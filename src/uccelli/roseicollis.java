@@ -10,7 +10,7 @@ public class roseicollis extends pappagallo {
 	}
 	
 	public String provenienza() {
-		return this.provenienza;
+		return "Provenienza: "+(this.provenienza);
 	}
 	
 }
