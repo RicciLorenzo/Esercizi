@@ -9,8 +9,9 @@ public class main {
 		pappagallo eddy = new pappagallo("cane",2);
 		eddy.cambiaNome("Eddy");
 		System.out.println(eddy.printNome());
+		System.out.println(eddy.printAnni());
 		int euro=0;
-		System.out.println("Inserisci il tuo budget:");
+		System.out.println("\nInserisci il tuo budget:");
 		Scanner scan = new Scanner(System.in);
 		euro=scan.nextInt();
 		eddy.possoComprarlo(euro);
@@ -19,8 +20,9 @@ public class main {
 		
 		roseicollis rosei = new roseicollis("tom",3);
 		System.out.println(rosei.printNome());
+		System.out.println(rosei.printAnni());
 		euro=0;
-		System.out.println("Inserisci il tuo budget:");
+		System.out.println("\nInserisci il tuo budget:");
 		euro=scan.nextInt();
 		rosei.possoComprarlo(euro);
 		System.out.println(rosei.provenienza());
@@ -29,9 +31,10 @@ public class main {
 		
 		opalino opal = new opalino("jim",1);
 		System.out.println(opal.printNome());
+		System.out.println(opal.printAnni());
 		System.out.println(opal.mutazione());
 		euro=0;
-		System.out.println("Inserisci il tuo budget:");
+		System.out.println("\nInserisci il tuo budget:");
 		euro=scan.nextInt();
 		opal.possoComprarlo(euro);
 		System.out.println(opal.provenienza());
