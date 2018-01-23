@@ -15,6 +15,12 @@ public class main {
 		euro=scan.nextInt();
 		eddy.possoComprarlo(euro);
 		
+		roseicollis carrie = new roseicollis("cane");
+		carrie.printNome();
+		System.out.println("Inserisci il tuo budget:");
+		euro=scan.nextInt();
+		carrie.possoComprarlo(euro);
+		
 	}
 	
 }

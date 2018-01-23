@@ -4,7 +4,10 @@ public class pappagallo {
 
 	String nome;
 	int anni;
-	int costo=20;
+	
+	public int costo() {
+		return 20;
+	}
 	
 	public void cambiaNome(String nome) {
 		this.nome=nome;
@@ -24,7 +27,7 @@ public class pappagallo {
 	
 	public void possoComprarlo(int euro) {
 		System.out.println("Posso comprarlo con "+euro+" euro?");
-		if(euro>=this.costo)
+		if(euro>=costo())
 			System.out.println("Si");
 		else
 			System.out.println("No");
