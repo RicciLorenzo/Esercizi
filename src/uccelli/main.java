@@ -8,7 +8,7 @@ public class main {
 		
 		pappagallo eddy = new pappagallo("cane",2);
 		eddy.cambiaNome("Eddy");
-		eddy.printNome();
+		System.out.println(eddy.printNome());
 		int euro=0;
 		System.out.println("Inserisci il tuo budget:");
 		Scanner scan = new Scanner(System.in);
@@ -18,7 +18,7 @@ public class main {
 		System.out.println("-------------");
 		
 		roseicollis prova = new roseicollis("tom",3);
-		prova.printNome();
+		System.out.println(prova.printNome());
 		euro=0;
 		System.out.println("Inserisci il tuo budget:");
 		euro=scan.nextInt();

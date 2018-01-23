@@ -28,12 +28,12 @@ public class pappagallo {
 		this.anni=anni;
 	}
 	
-	public void printNome() {
-		System.out.println("Nome: "+this.nome);
+	public String printNome() {
+		return "Nome: "+this.nome;
 	}
 	
-	public void printAnni() {
-		System.out.println("Anni: "+this.anni);
+	public String printAnni() {
+		return "Anni: "+this.anni;
 	}
 	
 	public void possoComprarlo(int euro) {
