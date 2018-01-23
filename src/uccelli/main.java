@@ -6,7 +6,7 @@ public class main {
 
 	public static void main(String [] args) {
 		
-		pappagallo eddy = new pappagallo();
+		pappagallo eddy = new pappagallo("cane",2);
 		eddy.cambiaNome("Eddy");
 		eddy.printNome();
 		int euro=0;
@@ -15,11 +15,16 @@ public class main {
 		euro=scan.nextInt();
 		eddy.possoComprarlo(euro);
 		
-		roseicollis carrie = new roseicollis("cane");
-		carrie.printNome();
+		System.out.println("-------------");
+		
+		roseicollis prova = new roseicollis("tom",3);
+		prova.printNome();
+		euro=0;
 		System.out.println("Inserisci il tuo budget:");
 		euro=scan.nextInt();
-		carrie.possoComprarlo(euro);
+		prova.possoComprarlo(euro);
+		
+		
 		
 	}
 	
