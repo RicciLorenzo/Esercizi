@@ -21,6 +21,7 @@ public class main {
 		roseicollis rosei = new roseicollis("tom",3);
 		System.out.println(rosei.printNome());
 		System.out.println(rosei.printAnni());
+		System.out.println(rosei.mutazione());
 		euro=0;
 		System.out.println("\nInserisci il tuo budget:");
 		euro=scan.nextInt();
