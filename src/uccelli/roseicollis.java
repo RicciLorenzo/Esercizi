@@ -3,6 +3,7 @@ package uccelli;
 public class roseicollis extends pappagallo {
 	
 	private String provenienza="Africa";
+	private String mutazione="Ancestrale";
 	
 	public roseicollis(String nome, int anni) {
 		super(nome, anni);
@@ -11,6 +12,10 @@ public class roseicollis extends pappagallo {
 	
 	public String provenienza() {
 		return "Provenienza: "+(this.provenienza);
+	}
+	
+	public String mutazione() {
+		return this.mutazione;
 	}
 	
 }

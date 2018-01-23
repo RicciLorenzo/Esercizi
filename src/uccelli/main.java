@@ -25,6 +25,17 @@ public class main {
 		prova.possoComprarlo(euro);
 		System.out.println(prova.provenienza());
 		
+		System.out.println("-------------");
+		
+		opalino test = new opalino("jim",1);
+		System.out.println(test.printNome());
+		System.out.println(test.mutazione());
+		euro=0;
+		System.out.println("Inserisci il tuo budget:");
+		euro=scan.nextInt();
+		test.possoComprarlo(euro);
+		System.out.println(test.provenienza());
+		
 		
 	}
 	
