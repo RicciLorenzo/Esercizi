@@ -23,7 +23,7 @@ public class main {
 		System.out.println("Inserisci il tuo budget:");
 		euro=scan.nextInt();
 		prova.possoComprarlo(euro);
-		
+		System.out.println(prova.provenienza());
 		
 		
 	}

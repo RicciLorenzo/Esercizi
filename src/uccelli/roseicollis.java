@@ -9,4 +9,8 @@ public class roseicollis extends pappagallo {
 		super.setCosto(30);
 	}
 	
+	public String provenienza() {
+		return this.provenienza;
+	}
+	
 }
