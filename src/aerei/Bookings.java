@@ -55,12 +55,22 @@ public class Bookings {
 		//...lancia una FlightSoldOutException se per la data when non ci sono piu’ posti nell’aereo 
 		//...lancia una PriceChangedException se price non e’ il prezzo per la data indicata 
 		//...altrimenti prenota un biglietto per la data indicata 
+		
+		if(start.compareTo(when)>0 && end.compareTo(when)<0)
+			throw new IllegalBookingDatesException();
+		
+		
+		
 	}
+	
 	
 	public int book(Date when) throws BookingException {
 		//...lancia una IllegalBookingDatesException se when non e’ tra start ed end incluse 
 		//...lancia una FlightSoldOutException se per la data when non ci sono piu’ posti nell’aereo 
 		//...altrimenti prenota un biglietto per la data indicata, a qualsiasi prezzo, e ritorna tale prezzo 
+		
+		if(start.compareTo(when)>0 && end.compareTo(when)<0)
+			throw new IllegalBookingDatesException();
 	}
 	
 	@Override 
