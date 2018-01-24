@@ -11,7 +11,7 @@ public abstract class Cartellone implements Iterable<Train>{
 		String risultato="";
 		
 		for(Train treno : this) {
-			risultato+=treno.toString();
+			risultato+=treno.toString()+"\n";
 		}
 		
 		return risultato;

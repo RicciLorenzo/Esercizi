@@ -5,11 +5,11 @@ import java.util.Iterator;
 public class CartelloneLimitato extends Cartellone {
 
 	int massimo;
-	Cartellone c = new CartelloneModificabile();
+	Cartellone cart;
 	
 	public CartelloneLimitato(Cartellone original, int max) {
 		this.massimo=max;
-		this.c=original;
+		this.cart=original;
 	}
 
 	
@@ -20,14 +20,23 @@ public class CartelloneLimitato extends Cartellone {
 		
 		return new Iterator<Train>(){
 			
-			private int c; 
-			private Iterator<Train> iteratore=c.iterator(); 
+					private int c; 
+					private Iterator<Train> iteratore=cart.iterator(); 
 			
-			public boolean hasNext() {
-				
-			}
+					public boolean hasNext() {
+						if(iteratore.hasNext() && c<massimo) {
+							return true;
+						}
+						else
+							return false;
+					}
+					
+					public Train next() {
+						c++;
+						return iteratore.next();
+					}
 			
-		}; 
+				}; 
 	}
 
 	
