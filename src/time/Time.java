@@ -20,14 +20,44 @@ public class Time implements Comparable<Time> {
 	
 	
 	@Override
-	public int compareTo(Time arg0) {
+	public int compareTo(Time other) {
 		
 		// TODO Auto-generated method stub
 		// Restituisce 0 se sono uguali; minore di 0 se "other" é una data maggiore; ritorna maggiore di 0 se this é maggiore.
 		
+		//if(this.year==other.year && this.month==other.month && this.day==other.day && this.hours==other.hours && this.minutes==other.minutes)
+		//	return 0;
+		
+		if(this.year>other.year) 
+			return 1;
 		
 		
+		else if(this.year<other.year)
+			return -1;
+		
+		if(this.month>other.month)
+			return 1;
+		else if(this.month<other.month)
+			return -1;
+		
+		if(this.day>other.day)
+			return 1;
+		else if(this.day<other.day)
+			return -1;
+		
+		if(this.hours>other.hours)
+			return 1;
+		else if(this.hours<other.hours)
+			return-1;
+		
+		if(this.minutes>other.minutes)
+			return 1;
+		else if(this.minutes<other.minutes)
+			return -1;
+		
+	
 		return 0;
+
 	}
 	
 	public String toStringOnlyHour() {
