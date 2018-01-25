@@ -36,33 +36,48 @@ public class Date {
 		return this.day^this.month^this.year;
 	}
 	
+	@Override
 	public int compareTo(Date other) {
-		if(this.day==other.day) {
-			if(this.month==other.month) {
-				if(this.year==other.year) {
+		/*Date otherD;
+		if(other instanceof Date)
+			otherD = (Date)other;
+		
+		if(this.day==otherD.day) {
+			if(this.month==otherD.month) {
+				if(this.year==otherD.year) {
 					return 0;
 				}
 			}
 		}
 		
-		if(this.year>other.year)
-			return this.year-other.year;
-		else if(this.year<other.year)
-			return this.year-other.year;
-		else if(this.month>other.month)
-			return this.month-other.month;
-		else if(this.month<other.month)
-			return this.month-other.month;
-		else if(this.day>other.day)
-			return this.day-other.day;
+		if(this.year>otherD.year)
+			return this.year-otherD.year;
+		else if(this.year<otherD.year)
+			return this.year-otherD.year;
+		else if(this.month>otherD.month)
+			return this.month-otherD.month;
+		else if(this.month<otherD.month)
+			return this.month-otherD.month;
+		else if(this.day>otherD.day)
+			return this.day-otherD.day;
 		
-		return this.day-other.day;
+		return this.day-otherD.day;*/
+		
+		int diff = day - other.day;
+		if (diff != 0)
+			return diff;
+
+		diff = month - other.month;
+		if (diff != 0)
+			return diff;
+
+		return year - other.year;
 	} 
 	
 	@Override 
 	public String toString() {
 		//...ritorna una stringa del tipo dd/mm/yyyy... 
-		return String.format("2%i/2%i/4%i",this.day,this.month,this.year);
+		return String.format("%2d/%2d/%4d",this.day,this.month,this.year);
 	} 
 	
 	public boolean isXmas() {

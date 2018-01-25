@@ -1,6 +1,9 @@
 package aerei;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class Bookings {
 
@@ -8,7 +11,7 @@ public class Bookings {
 	private int minimalPrice,maximalPrice;
 	private Fleet fleet;
 	
-	private HashMap<Date,Integer> postiLiberi = new HashMap<>();
+	private SortedMap<Date,Integer> postiOccupati = new TreeMap<>();
 
 	
 	protected Bookings(Date start, Date end, int minimalPrice, int maximalPrice, Fleet fleet) {
@@ -20,16 +23,24 @@ public class Bookings {
 		this.maximalPrice=maximalPrice;
 		this.fleet=fleet;
 		
-		if((start.compareTo(end))<0)
+		if((start.compareTo(end))>0)
 			throw new IllegalArgumentException("Start date is after the end of the booking date");
 		
 		if(minimalPrice<0 || minimalPrice>maximalPrice)
 			throw new IllegalArgumentException("Minimal price is higher than the maximal price, or it is negative");
 			
-			
 	}
 
-	
+	private boolean soldOut(Date when) {
+		
+		int postiLiberi=fleet.getAircraftFor(when).getCapacity();
+		postiOccupati.putIfAbsent(when, 0);
+		if(postiLiberi-(postiOccupati.get(when))==0)
+			return true;
+		
+		return false;
+		
+	}
 
 
 	// ritorna il prezzo del biglietto per la data indicata 
@@ -42,11 +53,16 @@ public class Bookings {
 		if(when.compareTo(start)<0 || when.compareTo(end)>0)
 			throw new IllegalBookingDatesException();
 		
-		if((fleet.getAircraftFor(when)).getCapacity()==0)
+		if(soldOut(when))
 			throw new FlightSoldOutException();
 		
-		postiLiberi.put(start,new Integer(30));
-		
+		if(soldOut(when))
+			return this.maximalPrice;
+		else if(postiOccupati.get(when)==0)
+			return this.minimalPrice;
+		else
+			return minimalPrice + postiOccupati.get(when) * (maximalPrice - minimalPrice) / (fleet.getAircraftFor(when).getCapacity() - 1);
+	
 	}
 	
 	// compra un biglietto per la data indicata,purche’ costi il prezzo indicato 
@@ -56,10 +72,11 @@ public class Bookings {
 		//...lancia una PriceChangedException se price non e’ il prezzo per la data indicata 
 		//...altrimenti prenota un biglietto per la data indicata 
 		
-		if(start.compareTo(when)>0 && end.compareTo(when)<0)
-			throw new IllegalBookingDatesException();
-		
-		
+		if(price==getQuoteFor(when))
+			postiOccupati.put(when, (postiOccupati.get(when)+1));
+		else
+			throw new PriceChangedException();
+
 		
 	}
 	
@@ -68,15 +85,25 @@ public class Bookings {
 		//...lancia una IllegalBookingDatesException se when non e’ tra start ed end incluse 
 		//...lancia una FlightSoldOutException se per la data when non ci sono piu’ posti nell’aereo 
 		//...altrimenti prenota un biglietto per la data indicata, a qualsiasi prezzo, e ritorna tale prezzo 
+		int price= getQuoteFor(when);
+		postiOccupati.put(when, (postiOccupati.get(when)+1));
 		
-		if(start.compareTo(when)>0 && end.compareTo(when)<0)
-			throw new IllegalBookingDatesException();
+		return price;
+		
+		
 	}
 	
 	@Override 
 	public String toString() {
 		//...ritorna una tabella con le date per cui si sono venduti biglietti, indicando quanti ne sono stati venduti per ogni data 
 		//...e che tipo di aereo e’ previsto per quella data. La tabella deve essere in ordine cronologico 
+		String tabella="";
+		for(Map.Entry m:postiOccupati.entrySet()) {
+			tabella+= m.getKey()+" "+postiOccupati.get(m.getKey())+" ["+fleet.getAircraftFor((Date) m.getKey()).toString()+"]\n";
+		}
+		
+		return tabella;
+		
 	}
 	
 
