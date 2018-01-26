@@ -15,7 +15,7 @@ public class SplitOrder extends Order {
 	public Iterable<Shipping> ship() throws MissingProductException {
 		//...compra i prodotti e ritorna una o piu’ spedizioni 
 		
-		this.buy();
+		buy();
 		
 		Map<Integer, List<Product>> spedizioni = new HashMap<>();
 		for(Product product : getProducts()) {
