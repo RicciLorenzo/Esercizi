@@ -5,7 +5,8 @@ import java.util.TreeSet;
 
 public final class Margherita extends AbstractPizza {
 	
-	final static Margherita INSTANCE = new Margherita(); // unico oggetto esistente private Margherita() {}
+	final static Margherita INSTANCE = new Margherita(); 
+	// unico oggetto esistente private Margherita() {}
 	//.. stampandola si ottiene "Margherita", i suoi ingredienti sono "tomato" e "mozzarella", il costo 5 euro
 	
 	private Margherita() {
