@@ -1,6 +1,7 @@
 package pizza;
 
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 public final class Mushrooms extends AbstractPizza {
 
@@ -11,14 +12,18 @@ public final class Mushrooms extends AbstractPizza {
 	
 	@Override
 	public int getPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return 7;
 	}
 
 	@Override
 	public SortedSet<String> getIngredienti() {
-		// TODO Auto-generated method stub
-		return null;
+		SortedSet<String> ingr = new TreeSet<>();
+		ingr.add("Tomato");
+		ingr.add("Mozzarella");
+		ingr.add("Mushrooms");
+		
+		return ingr;
 	}
 
 }
