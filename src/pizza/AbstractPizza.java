@@ -1,6 +1,5 @@
 package pizza;
 
-import java.util.SortedSet;
 
 public abstract class AbstractPizza implements Pizza {
 	
