@@ -5,15 +5,15 @@ import java.util.TreeSet;
 
 public class PizzaWith extends AbstractPizza {
 	
-	Pizza base;
-	String addIngredient;
-	int extraPrice;
+	private final Pizza base;
+	private final String addIngredient;
+	private final int extraPrice;
 	
 	// costruisce la pizza ottenuta da base aggiungendo l’ingrediente indicato, che costa
 	// il prezzo extra indicato. Se l’ingrediente era gia’ fra quelli della pizza base, 
 	// deve lanciare un’eccezione di classe IllegalPizzaModificationException public PizzaWith(Pizza base, String addedIngredient, int extraPrice) { ... }
 
-	public PizzaWith(Pizza base, String addIngredient, int extraPrice) throws IllegalPizzaModificationException {
+	public PizzaWith(Pizza base, String addIngredient, int extraPrice) {
 		if(base.getIngredienti().contains(addIngredient))
 			throw new IllegalPizzaModificationException();
 		

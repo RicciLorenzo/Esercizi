@@ -8,22 +8,22 @@ import java.util.TreeSet;
 
 public class Order {
 	
-	ArrayList<Pizza> ordine = new ArrayList();
+	private final Pizza[] ordine;
 	
 	public Order(Pizza... pizzas) {
 		//...prende nota delle pizzas ordinate
-		ordine=(ArrayList) Arrays.asList(pizzas);
+		this.ordine=pizzas;
 	}
 	
 	@Override
 	public String toString() {
 		//... ritorna la stampa delle pizze ordinate con i prezzi di ciascuna e in fondo il prezzo totale dell’ordine (si veda esempio in basso)
 		
-		String result="Ordine:\n\n";
+		String result="\n\nOrdine:\n\n";
 		int tot=0;
 		
-		for(Pizza p : this.ordine) {
-			result="Pizza: "+p+" Prezzo: "+p.getPrice();
+		for(Pizza p : ordine) {
+			result=result+"Pizza: "+p+"--Prezzo: "+p.getPrice()+"\n";
 			tot=tot+p.getPrice();
 		}
 		result=result+"\nPrezzo TOTALE: "+tot;

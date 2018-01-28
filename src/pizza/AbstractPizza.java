@@ -28,7 +28,7 @@ public abstract class AbstractPizza implements Pizza {
 	}
 	
 	@Override
-	public int compareTo(Pizza other) {
+	public final int compareTo(Pizza other) {
 		
 		return getPrice()-other.getPrice();
 		

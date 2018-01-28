@@ -19,11 +19,16 @@ public final class Formaggi extends AbstractPizza {
 	public SortedSet<String> getIngredienti() {
 		//mozzarella, parmesa, gorgonzola
 		SortedSet<String> ingr = new TreeSet<>();
-		ingr.add("Mozzarella");
-		ingr.add("Parmesan");
-		ingr.add("Gorgonzola");
+		ingr.add("mozzarella");
+		ingr.add("parmesan");
+		ingr.add("gorgonzola");
 		
 		return ingr;
 	}
 
+	@Override
+	public String toString() {
+		return "Formaggi";
+	}
+	
 }

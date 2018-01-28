@@ -19,11 +19,16 @@ public final class Funghi extends AbstractPizza {
 	@Override
 	public SortedSet<String> getIngredienti() {
 		SortedSet<String> ingr = new TreeSet<>();
-		ingr.add("Tomato");
-		ingr.add("Mozzarella");
-		ingr.add("Mushrooms");
+		ingr.add("tomato");
+		ingr.add("mozzarella");
+		ingr.add("mushrooms");
 		
 		return ingr;
+	}
+	
+	@Override
+	public String toString() {
+		return "Funghi";
 	}
 
 }

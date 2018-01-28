@@ -21,8 +21,8 @@ public final class Margherita extends AbstractPizza {
 	@Override
 	public SortedSet<String> getIngredienti(){
 		SortedSet<String> ingr = new TreeSet<String>();
-		ingr.add("Tomato");
-		ingr.add("Mozzarella");
+		ingr.add("tomato");
+		ingr.add("mozzarella");
 		
 		return ingr;
 	}

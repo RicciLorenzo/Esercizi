@@ -1,5 +1,6 @@
 package pizza;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +30,7 @@ public class Main {
 		allFiveList.add(p4);
 		allFiveList.add(p5);
 		
-		Pizza[] allFiveArray = new Pizza[] { p1, p2, p3, p4, p5 };
+		Pizza[] allFiveArray = new Pizza[] { p1, p2, p3, p4, p5};
 		System.out.println("allFiveSet.size() = " + allFiveSet.size()); 
 		System.out.println("allFiveList.size() = " + allFiveList.size()); 
 		System.out.println("allFiveArray.length = " + allFiveArray.length);
