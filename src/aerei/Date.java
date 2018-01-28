@@ -36,7 +36,6 @@ public class Date {
 		return this.day^this.month^this.year;
 	}
 	
-	@Override
 	public int compareTo(Date other) {
 		/*Date otherD;
 		if(other instanceof Date)
