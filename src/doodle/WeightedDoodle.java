@@ -2,8 +2,6 @@ package doodle;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class WeightedDoodle extends Doodle {
 	private final Map<String, Double> weights = new HashMap<>(); // una mappa da nome a peso
