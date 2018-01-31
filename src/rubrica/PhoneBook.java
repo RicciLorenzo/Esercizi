@@ -8,11 +8,12 @@ public class PhoneBook extends View {
 	private ArrayList<Entry> rubrica = new ArrayList<>();
 	
 	public static class Entry {
-	public final String name; 
-	public final String surname; 
-	public final int phone; 
-	public final boolean sex; 
-	public final static boolean MALE = false, FEMALE = true;
+		public final String name; 
+		public final String surname; 
+		public final int phone; 
+		public final boolean sex; 
+		public final static boolean MALE = false;
+		public final static boolean FEMALE = true;
 	
 	
 
