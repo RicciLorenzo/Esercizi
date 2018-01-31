@@ -7,9 +7,10 @@ public class Main {
 		Shop amazing = new Shop(); 
 		amazing.add(bike, 3); 
 		amazing.add(phone, 4); // il negozio amazing ha disponibili 3 bici e 4 telefoni 
+		
 		// creiamo tre ordini, due semplici e uno dividendo i prodotti per attesa di spedizione
-		Order order1 = new SimpleOrder(amazing, bike, phone, phone); 
-		// una bici e due telefoni 
+		
+		Order order1 = new SimpleOrder(amazing, bike, phone, phone); // una bici e due telefoni 
 		Order order2 = new SplitOrder(amazing, phone, bike, phone); // una bici e due telefoni 
 		Order order3 = new SimpleOrder(amazing, bike, phone); // una bici e un telefono 
 		
