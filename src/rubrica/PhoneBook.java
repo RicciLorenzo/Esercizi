@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class PhoneBook extends View { 
 	
-	ArrayList<Entry> rubrica = new ArrayList<>();
+	private ArrayList<Entry> rubrica = new ArrayList<>();
 	
 	public static class Entry {
 	public final String name; 
@@ -59,7 +59,8 @@ public void remove(String name, String surname) throws UnknowEntryException {
 	
 }
 
-@Override public Iterator<Entry> iterator() {  
+@Override 
+public Iterator<Entry> iterator() {  
 	// resituisce un iteratore sulle entry di questo PhoneBook
 	
 	return rubrica.iterator();
