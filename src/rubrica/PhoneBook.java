@@ -45,7 +45,7 @@ public void add(String name, String surname, int phone, boolean sex) {
 	
 }
 
-public void remove(String name, String surname) {
+public void remove(String name, String surname) throws UnknowEntryException {
 	// rimuove l’entry con tale nome e cognome; se non e’ presente, lancia una UnknownEntryException
 	
 	for(Entry contatto : rubrica) {
@@ -55,7 +55,7 @@ public void remove(String name, String surname) {
 		}
 	}
 	
-	throw new UnknowEntryException();
+	throw new UnknowEntryException("Impossibile rimuovere un contatto non esistente.");
 	
 }
 
