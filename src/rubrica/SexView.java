@@ -1,6 +1,5 @@
 package rubrica;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import rubrica.PhoneBook.Entry;
