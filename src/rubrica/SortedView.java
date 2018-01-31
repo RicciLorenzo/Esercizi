@@ -26,7 +26,7 @@ public class SortedView extends View {
 	
 	private class SortedViewIterator implements Iterator<Entry> {
 		
-		private Iterator<Entry> iteratore = parent.iterator();
+		int c;
 		private Entry[] sortedEntries;
 		private Entry next;
 		
@@ -43,7 +43,7 @@ public class SortedView extends View {
 
 		@Override
 		public boolean hasNext() {
-			if(iteratore.next() != null)
+			if(c<sortedEntries.length)
 				return true;
 			else
 				return false;
@@ -52,12 +52,7 @@ public class SortedView extends View {
 		
 		@Override
 		public Entry next() {
-			if(iteratore.hasNext()) {
-				next=iteratore.next();
-				return next;
-			}
-			
-			return next;
+			return sortedEntries[c++];
 		}
 		
 		

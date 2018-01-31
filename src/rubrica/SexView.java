@@ -23,15 +23,18 @@ public class SexView extends View {
 	private class SexViewIterator implements Iterator<Entry>{
 
 		private Iterator<Entry> iteratore;
-		private Entry next;
+		private Entry next=null;
 		
 		private SexViewIterator() {
 			iteratore=parent.iterator();
 			
+			//next=null;
 			while(iteratore.hasNext()) {
 				Entry temp = iteratore.next();
-				if(temp.sex==sex)
-					next=temp;
+				if(temp.sex==sex) {
+				next=temp;
+				break;
+				}
 			}
 			
 		}
@@ -50,10 +53,12 @@ public class SexView extends View {
 		public Entry next() {
 			Entry result = next;
 			
+			next=null;
 			while(iteratore.hasNext()) {
-				if(iteratore.next().sex==sex) {
-					result = iteratore.next();
-					return result;
+				Entry temp = iteratore.next();
+				if(temp.sex==sex) {
+					next = temp;
+					break;
 				}
 			}
 			

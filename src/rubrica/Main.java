@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) throws UnknowEntryException { 
 		
 		PhoneBook book = new PhoneBook();
-		book.add("Primo", "Levi", 7569222, false); 
+		book.add("Primo", "Levi", 7569222, false);
 		book.add("Fausto", "Spoto", 1234567, false); 
 		book.add("Giorgio", "Levi", 1563423, false); 
 		book.add("Catherine", "Bach", 367745, true);
@@ -21,7 +21,7 @@ public class Main {
 		book.add("Audrey", "Hepburn", 32444, true); 
 		book.remove("Fausto", "Spoto");
 		
-		View view = book; 
+		View view = book;
 		System.out.println("DIRECT VIEW"); 
 		System.out.println(view);
 		view = new SexView(view, false); 
