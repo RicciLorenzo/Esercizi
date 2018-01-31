@@ -26,7 +26,7 @@ public class SexView extends View {
 		private Iterator<Entry> iteratore;
 		private Entry entry;
 		
-		private void SexViewiterator() {
+		private SexViewIterator() {
 			iteratore=parent.iterator();
 			if(iteratore.next().sex==sex)
 				entry=iteratore.next();
