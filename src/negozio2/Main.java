@@ -25,7 +25,7 @@ public class Main {
 		System.out.println(title + "\n"); 
 		int counter = 1; 
 		for (Shipping shipping: shippings) 
-			System.out.println("shipping #" + counter++ + ’\n’ + shipping); 
+			System.out.println("shipping #" + counter++ + "\n" + shipping); 
 		System.out.println(); 
 	}
 }
