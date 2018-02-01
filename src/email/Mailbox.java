@@ -1,6 +1,6 @@
 package email;
 
-import java.util.Arrays;
+
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -82,6 +82,11 @@ public class Mailbox {
 		
 	}
 	
+	public Set<Email> getEmails() { 
+		//restituisce le email ricevute da questa mailbox... 
+		return server.getEmailsTo(this);
+	}
+	
 	public Email post(String subject, String body, Mailbox... recipients) { 
 		//invia e ritorna un’email da questa mailbox ai recipients indicati, con soggetto e corpo indicati...
 		TreeSet<Mailbox> temp = new TreeSet<>();
@@ -90,6 +95,8 @@ public class Mailbox {
 		}
 
 		server.post(new SimpleEmail(this,temp,subject,body));
+		
+		return new SimpleEmail(this,temp,subject,body);
 		
 	}
 	
@@ -101,12 +108,11 @@ public class Mailbox {
 		
 		
 		if(!email.getRecipients().contains(this)) {
-			throw new UnknowEmailException();
+			throw new UnknownEmailException();
 		}
 		
 		Set<Mailbox> utenti = new TreeSet<>();
 		String result="RE: "+email.getSubject();
-		email.getSubject().replaceAll(email.getSubject(), result);
 		
 		for(Mailbox user : email.getRecipients()) {
 			if(user==this) {}
@@ -118,9 +124,11 @@ public class Mailbox {
 		
 		utenti.add(email.getSender());
 		
-		for(Mailbox destinatari : utenti) {
-			server.post(new SimpleEmail(this,utenti,result,body));
-		}
+		String newBody=body+"\n\n"+email.getBody();
+		
+		server.post(new SimpleEmail(this,utenti,result,newBody));
+		
+		return new SimpleEmail(this,utenti,result,body);
 		
 	} 
 	
@@ -131,6 +139,10 @@ public class Mailbox {
 			
 			Set<Mailbox> utenti = new TreeSet<>();
 		
+			if(!received.contains(email)) {
+				throw new UnknownEmailException();
+			}
+			
 			for(Mailbox removeUser : email.getRecipients()) {
 				email.getRecipients().remove(removeUser);
 			}
@@ -141,6 +153,8 @@ public class Mailbox {
 			String newBody=body+"\n"+email.getBody();
 			
 			server.post(new SimpleEmail(this,utenti,newSubject,newBody));
+			
+			return null;
 		
 		} 
 	
@@ -148,6 +162,12 @@ public class Mailbox {
 	public String toString() { 
 		//restituisce una stringa con le email ricevute da questa mailbox, separate da trattini. 
 		//Nel mezzo, ciascuna email verra’ stampata chiamando toString() sull’email 
-		
+		StringBuilder sb = new StringBuilder();
+		sb.append("Mailbox of ").append(user).append(":\n");
+		for (Email email: getEmails())
+			sb.append("---------------------------------------\n").append(email.toString());
+
+		return sb.toString();
+
 	} 
 }

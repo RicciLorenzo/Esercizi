@@ -1,6 +1,5 @@
 package email;
 
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
