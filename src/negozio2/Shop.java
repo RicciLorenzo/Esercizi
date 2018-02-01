@@ -1,5 +1,6 @@
 package negozio2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,10 +25,40 @@ public class Shop {
 		//se non fossero disponibili tutti i prodotti, lancia una MissingProductException; 
 		//in tal caso, il negozio dovra’ restare immutato e nessun prodotto dovra’ venire tolto 
 		
-		if(!shop.containsKey(productsToBuy))
-			throw new MissingProductException();
+		ArrayList<Product> rimossi = new ArrayList<>();
 		
-		shop.remove(productsToBuy);
+		for(Product product : productsToBuy) {
+			if(shop.containsKey(product)) {
+				rimossi.add(product);
+				int n=shop.get(product);
+				n-=1;
+				
+				if(n==0)
+					shop.remove(product);
+				else {
+					shop.remove(product);
+					shop.put(product, n);
+				}
+			}
+			else {
+				
+				for(Product restore : rimossi) {
+					
+					if(!shop.containsKey(restore))
+						shop.putIfAbsent(restore, 1);
+					else {
+						int c=shop.get(restore);
+						shop.put(restore, c+1);
+					}
+					
+				}
+				
+				throw new MissingProductException();
+				
+			}
+		}
+		
+		rimossi.clear();
 		
 	}
 }

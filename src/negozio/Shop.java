@@ -14,7 +14,7 @@ public class Shop {
 	}
 
 	void buy(Product[] productsToBuy) throws MissingProductException {
-		List<Product> removed = new ArrayList<>();
+		ArrayList<Product> removed = new ArrayList<>();
 
 		for (Product product: productsToBuy) {
 			Integer available = products.get(product);
