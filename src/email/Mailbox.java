@@ -99,12 +99,48 @@ public class Mailbox {
 		//Il soggetto della risposta sara’ quello dell’email fornita come paramero, preceduto da RE: 
 		//Se l’email fornita come parametro non e’ stata ricevuta da questa mailbox, lancia una UnknownEmailException 
 		
+		
+		if(!email.getRecipients().contains(this)) {
+			throw new UnknowEmailException();
+		}
+		
+		Set<Mailbox> utenti = new TreeSet<>();
+		String result="RE: "+email.getSubject();
+		email.getSubject().replaceAll(email.getSubject(), result);
+		
+		for(Mailbox user : email.getRecipients()) {
+			if(user==this) {}
+			else {
+				utenti.add(user);
+			}
+				
+		}
+		
+		utenti.add(email.getSender());
+		
+		for(Mailbox destinatari : utenti) {
+			server.post(new SimpleEmail(this,utenti,result,body));
+		}
+		
 	} 
 	
 	public Email forward(Email email, String body, Mailbox recipient) throws UnknownEmailException { 
 		//invia e ritorna un forward dell’email fornita come parametro al recipient indicato. 
 		//Il soggetto del forward sara’ quello dell’email fornita come paramero, preceduto da FWD: 
 		//Se l’email fornita come parametro non e’ stata ricevuta da questa mailbox, lancia una UnknownEmailException 
+			
+			Set<Mailbox> utenti = new TreeSet<>();
+		
+			for(Mailbox removeUser : email.getRecipients()) {
+				email.getRecipients().remove(removeUser);
+			}
+			
+			utenti.add(recipient);
+			
+			String newSubject="FWD: "+email.getSubject();
+			String newBody=body+"\n"+email.getBody();
+			
+			server.post(new SimpleEmail(this,utenti,newSubject,newBody));
 		
 		} 
 	
