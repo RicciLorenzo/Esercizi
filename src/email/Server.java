@@ -5,9 +5,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Server { 
-	//... 
+	
 	TreeSet<Email> sent = new TreeSet<>();
-	TreeSet<Email> sentTo = new TreeSet<>();
 	
 	public void post(Email email) { 
 		//aggiunge l’email a quelle spedite con questo server...
@@ -19,7 +18,7 @@ public class Server {
 	public Set<Email> getEmailsTo(Mailbox recipient) {
 		//restituisce le email ricevute da recipient... 
 		
-		sentTo.clear();
+		TreeSet<Email> sentTo = new TreeSet<>();
 		
 		for(Email mail : sent) {
 			if(mail.getRecipients().contains(recipient)) {
