@@ -22,7 +22,7 @@ public class Server {
 		sentTo.clear();
 		
 		for(Email mail : sent) {
-			if(mail.getRecipients()==recipient) {
+			if(mail.getRecipients().contains(recipient)) {
 				sentTo.add(mail);
 			}
 		}
