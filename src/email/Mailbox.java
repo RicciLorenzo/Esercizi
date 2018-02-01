@@ -85,7 +85,7 @@ public class Mailbox {
 	public Email post(String subject, String body, Mailbox... recipients) { 
 		//invia e ritorna un’email da questa mailbox ai recipients indicati, con soggetto e corpo indicati...
 		
-		server.post(new SimpleEMail(this.user,recipients,subject,body));
+		server.post(new SimpleEmail(this,recipients,subject,body));
 		
 	}
 	
