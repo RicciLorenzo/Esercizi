@@ -84,14 +84,15 @@ public class Mailbox {
 	
 	public Email post(String subject, String body, Mailbox... recipients) { 
 		//invia e ritorna un’email da questa mailbox ai recipients indicati, con soggetto e corpo indicati...
-		
-		server.post(new SimpleEmail(this,recipients,subject,body));
+		TreeSet<Mailbox> temp = new TreeSet<>();
+		for(Mailbox recipiente : recipients) {
+			temp.add(recipiente);
+		}
+
+		server.post(new SimpleEmail(this,temp,subject,body));
 		
 	}
 	
-	private String getName() {
-		return this.user;
-	}
 	
 	public Email replyToAll(Email email, String body) throws UnknownEmailException { 
 		//invia e ritorna una risposta a tutti i destinatari dell’email fornita come parametro, meno questa mailbox ma incluso il mittente. 
