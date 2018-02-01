@@ -6,7 +6,8 @@ public class Main {
 		Product phone = new Product("phone", 129.9, 1); // un telefono costa 129.9 euro ed e’ disponibile per la spedizione in un giorno 
 		Shop amazing = new Shop(); 
 		amazing.add(bike, 3); 
-		amazing.add(phone, 4); // il negozio amazing ha disponibili 3 bici e 4 telefoni 
+		amazing.add(phone, 4); 
+		// il negozio amazing ha disponibili 3 bici e 4 telefoni 
 		
 		// creiamo tre ordini, due semplici e uno dividendo i prodotti per attesa di spedizione
 		

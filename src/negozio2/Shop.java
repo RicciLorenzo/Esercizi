@@ -2,22 +2,24 @@ package negozio2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class Shop {
 	//... 
-	private Product product;
-	private int howMany;
+
 	private HashMap<Product,Integer> shop = new HashMap<>();
 	
 	public void add(Product product, int howMany) {
 		//...aggiunge howMany volte il prodotto indicato, che poteva gia’ essere presente in negozio
-		if(shop.containsKey(product)) {
+		/*if(shop.containsKey(product)) {
 			shop.put(product, shop.get(product)+howMany);
 		}
 		
-		shop.put(product, howMany);
+		shop.put(product, howMany);*/
+		
+		shop.putIfAbsent(product, 0);
+		shop.put(product, shop.get(product)+howMany);
+		
 	}
 	void buy(Product[] productsToBuy) throws MissingProductException { 
 		//rimuove i prodotti indicati da quelli disponibili in questo negozio; 
@@ -27,16 +29,15 @@ public class Shop {
 		ArrayList<Product> rimossi = new ArrayList<>();
 		
 		for(Product product : productsToBuy) {
-			if(shop.containsKey(product)) {
+			if(shop.get(product)>0) {
 				rimossi.add(product);
 				int n=shop.get(product);
-				n-=1;
+				n=n-1;
 				
 				if(n==0)
 					shop.remove(product);
 				else {
-					shop.remove(product);
-					shop.put(product, n);
+					shop.put(product, n-1);
 				}
 			}
 			else {
@@ -56,8 +57,6 @@ public class Shop {
 				
 			}
 		}
-		
-		rimossi.clear();
 		
 	}
 }
