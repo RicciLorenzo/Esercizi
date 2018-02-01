@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import negozio.MissingProductException;
 
 public class Shop {
 	//... 
