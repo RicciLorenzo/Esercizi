@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Shipping {
 	
-	ArrayList<Product> p = new ArrayList<>();
+	private ArrayList<Product> p = new ArrayList<>();
 	
 	public Shipping(Iterable<Product> products) {
 		//...crea una spedizione dei prodotti indicati 

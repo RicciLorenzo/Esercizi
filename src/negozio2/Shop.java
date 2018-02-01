@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class Shop {
 	//... 
-	Product product;
-	int howMany;
-	HashMap<Product,Integer> shop = new HashMap<>();
+	private Product product;
+	private int howMany;
+	private HashMap<Product,Integer> shop = new HashMap<>();
 	
 	public void add(Product product, int howMany) {
 		//...aggiunge howMany volte il prodotto indicato, che poteva gia’ essere presente in negozio
