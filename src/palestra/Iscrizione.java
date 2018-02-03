@@ -14,18 +14,50 @@ public class Iscrizione implements Comparable<Iscrizione> {
 		
 		if(meseInizio.compareTo(meseFine)>0)
 			throw new IscrizioneVuotaException();
-		if(annoInizio<annoFine) {
-			int inizio = meseInizio.ordinal();
-			int fine = meseFine.ordinal();
-			
-			Mese[] mesi= meseInizio.values();
-		}
+		if(timeSpent(meseInizio,annoInizio,meseFine,annoFine))
+			throw new IscrizioneTroppoLungaException();
+		
 		
 		this.utente=utente;
 		this.meseInizio=meseInizio;
 		this.annoInizio=annoInizio;
 		this.meseFine=meseFine;
 		this.annoFine=annoFine;
+		
+		
+	}
+	
+	private boolean timeSpent(Mese meseInizio, int annoInizio, Mese meseFine, int annoFine){
+		
+		if(annoFine-annoInizio>1)
+			return true;
+		if(annoFine-annoInizio==1) {
+			int annoTemp=annoInizio;
+			int nMese = meseInizio.ordinal();
+			int c;
+			for(c=0;;c++) {
+				if(nMese==meseFine.ordinal() && annoTemp==annoFine)
+					break;
+				else {
+					if(nMese==12) {
+						nMese=1;
+						annoTemp+=1;
+					}
+					else {
+						nMese++;
+					}
+				}
+			}
+			
+			if(c>12)
+				return true;
+			else
+				return false;
+					
+		}
+		else
+			return false;
+		
 		
 	}
 	
