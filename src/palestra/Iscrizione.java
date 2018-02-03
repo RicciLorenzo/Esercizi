@@ -14,6 +14,12 @@ public class Iscrizione implements Comparable<Iscrizione> {
 		
 		if(meseInizio.compareTo(meseFine)>0)
 			throw new IscrizioneVuotaException();
+		if(annoInizio<annoFine) {
+			int inizio = meseInizio.ordinal();
+			int fine = meseFine.ordinal();
+			
+			Mese[] mesi= meseInizio.values();
+		}
 		
 		this.utente=utente;
 		this.meseInizio=meseInizio;
