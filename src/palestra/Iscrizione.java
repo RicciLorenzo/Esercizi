@@ -52,8 +52,30 @@ public class Iscrizione implements Comparable<Iscrizione> {
 		//li mette in ordine per inizio. A parita’ di inizio, li mette in ordine per utente. 
 		//A parita’ di inizio e di utente, li mette in ordine per fine 
 		
-		int diff;
 		
+		if(this.annoInizio>other.annoInizio)
+			return 1;
+		else if(this.annoInizio<other.annoInizio)
+			return -1;
+		else{
+			if(this.meseInizio.compareTo(other.meseInizio)!=0)
+				return this.meseInizio.compareTo(other.meseInizio);
+			else {
+				if(this.utente.compareTo(other.utente)!=0)
+					return this.utente.compareTo(other.utente);
+				else {
+						
+					if(this.annoFine>other.annoFine)
+						return 1;
+					else if(this.annoFine<other.annoFine)
+						return -1;
+					else
+						return this.meseFine.compareTo(other.meseFine);
+
+				}
+			}
+				
+		}
 		
 		
 	} 
@@ -63,6 +85,7 @@ public class Iscrizione implements Comparable<Iscrizione> {
 		
 		String result;
 		result=this.utente.toString()+": dall'inizio di "+this.meseInizio+" "+this.annoInizio+" Alla fine di "+this.meseFine+" "+this.annoFine;
+		return result;
 	} 
 	
 	public boolean sovrappostaCon(Iscrizione other) { 
@@ -76,5 +99,11 @@ public class Iscrizione implements Comparable<Iscrizione> {
 	
 	public boolean relativaAl(int anno) {
 		//determina se e’ relativa all’anno indicato, anche parzialmente
+		if(this.annoInizio==anno||this.annoFine==anno)
+			return true
+		
+		return false;
 	}
+	
+	
 }
