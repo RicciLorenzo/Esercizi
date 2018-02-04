@@ -1,5 +1,6 @@
 package palestra;
 
+
 public class Iscrizione implements Comparable<Iscrizione> { 
 	//... 
 	Utente utente;
@@ -12,12 +13,23 @@ public class Iscrizione implements Comparable<Iscrizione> {
 		//... se il mese di inizio viene cronologicamente dopo il mese di fine, lancia una IscrizioneVuotaException 
 		//se l’iscrizione va oltre i 12 mesi, lancia una IscrizioneTroppoLungaException 
 		
-		if(meseInizio.compareTo(meseFine)>0)
-			throw new IscrizioneVuotaException();
-		if(timeSpent(meseInizio,annoInizio,meseFine,annoFine))
+		if(annoInizio==annoFine) {
+			if(meseInizio.compareTo(meseFine)>0)
+				throw new IscrizioneVuotaException();
+		}
+		
+		
+		int mesi;
+		
+		if(annoFine==annoInizio+1) {
+			mesi=(12-meseInizio.ordinal())+(meseFine.ordinal())+1;
+			if(mesi>12)
+				throw new IscrizioneTroppoLungaException();
+		}
+		if(annoFine>annoInizio+1)
 			throw new IscrizioneTroppoLungaException();
 		
-		
+		mesi=0;
 		this.utente=utente;
 		this.meseInizio=meseInizio;
 		this.annoInizio=annoInizio;
@@ -27,7 +39,7 @@ public class Iscrizione implements Comparable<Iscrizione> {
 		
 	}
 	
-	private boolean timeSpent(Mese meseInizio, int annoInizio, Mese meseFine, int annoFine){
+	/*private boolean timeSpent(Mese meseInizio, int annoInizio, Mese meseFine, int annoFine){
 		
 		if(annoFine-annoInizio>1)
 			return true;
@@ -59,8 +71,9 @@ public class Iscrizione implements Comparable<Iscrizione> {
 			return false;
 		
 		
-	}
+	}*/
 	
+
 	public Utente getUtente() { 
 		//ritorna l’utente che si e’ iscritto 
 		return this.utente;
@@ -122,23 +135,64 @@ public class Iscrizione implements Comparable<Iscrizione> {
 		//ritorna una stringa del tipo: "Fausto Spoto: dall’inizio di SETTEMBRE 2014 alla fine di GENNAIO 2015" 
 		
 		String result;
-		result=this.utente.toString()+": dall'inizio di "+this.meseInizio+" "+this.annoInizio+" Alla fine di "+this.meseFine+" "+this.annoFine;
+		result="\n"+this.utente.toString()+": dall'inizio di "+this.meseInizio+" "+this.annoInizio+" Alla fine di "+this.meseFine+" "+this.annoFine;
 		return result;
 	} 
 	
 	public boolean sovrappostaCon(Iscrizione other) { 
-		//determina se this e other sono sovrapposte nel tempo (anche parzialmente) 
+		//determina se this e other sono sovrapposte nel tempo (anche parzialmente)
+		
+		if(this.annoInizio==other.annoInizio && this.annoFine==other.annoFine) {
+			if(other.meseInizio.ordinal()>=this.meseInizio.ordinal() && this.meseInizio.ordinal()<=other.meseFine.ordinal())
+				return true;
+			if(this.meseInizio.ordinal()>=other.meseInizio.ordinal() && other.meseInizio.ordinal()<=this.meseFine.ordinal())
+				return true;
+		}
+		
+		return false; 
+			
+		
+		
 	} 
 	
 	public int costo() { 
 		//ritorna il costo dell’iscrizione: per 1 o 2 mesi costa 50 euro al mese, da 3 a 5 mesi costa 40 euro al mese, 
 		//da 6 a 11 mesi costa 35 euro al mese, per 12 mesi costa 30 euro al mese
+		
+		int mesi;
+	
+		if(annoInizio==annoFine) {
+			mesi=this.meseFine.ordinal()-this.meseInizio.ordinal();
+			if(mesi==1||mesi==2)
+				return 50;
+			if(mesi>=3 && mesi<=5)
+				return 40;
+			if(mesi>=6&&mesi<=11)
+				return 35;
+			if(mesi==12)
+				return 30;		
+		}
+		
+		if(annoFine==annoInizio+1) {
+			mesi=(12-meseInizio.ordinal())+(meseFine.ordinal())+1;
+			if(mesi==1||mesi==2)
+				return 50;
+			if(mesi>=3 && mesi<=5)
+				return 40;
+			if(mesi>=6&&mesi<=11)
+				return 35;
+			if(mesi==12)
+				return 30;
+		}
+		
+		return 0;
+		
 	} 
 	
 	public boolean relativaAl(int anno) {
 		//determina se e’ relativa all’anno indicato, anche parzialmente
 		if(this.annoInizio==anno||this.annoFine==anno)
-			return true
+			return true;
 		
 		return false;
 	}
