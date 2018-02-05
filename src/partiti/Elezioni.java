@@ -1,8 +1,9 @@
 package partiti;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
-public class Elezioni { 
+public class Elezioni implements Iterator<VotiPerPartito> { 
 	//...
 	
 	HashMap<Partito, Integer> elezioni = new HashMap<>();
@@ -44,6 +45,37 @@ public class Elezioni {
 	protected final int votiPer(Partito partito) {
 		//...restituisce il numero totale di voti registrati per il partito indicato 
 		return elezioni.get(partito);
+	}
+	
+	@Override
+	public final Iterator<VotiPerPartito> iterator(){
+		
+		return ElezioniIterator();
+		
+	}
+	
+	private class ElezioniIterator implements Iterator<VotiPerPartito> {
+		
+		int cursor=0;
+		
+		@Override
+		public boolean hasNext() {
+			if(cursor<Partito.NUMERO_PARTITI)
+				return true;
+			
+			return false;
+			
+		}
+		
+		@Override
+		public VotiPerPartito next() {
+			
+			
+			
+		}
+		
+		
+		
 	}
 
 }
