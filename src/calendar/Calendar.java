@@ -87,7 +87,24 @@ public class Calendar {
 
 	    // ritorna il giorno di questa data, tra 1 e 31
 	    public int getDay() {
-	      ...
+	      if(daysFromStart<31) 
+	    	  return daysFromStart+1;
+	      if(daysFromStart>30 && daysFromStart<58) {
+	    	  int temp=-30;
+	    	  return temp+daysFromStart;
+	    	}
+	      if(isLeapYear()) {
+		      if(daysFromStart>30 && daysFromStart<58) {
+		    	  int temp=-30;
+		    	  return temp+daysFromStart;
+		    	}
+	      }
+	      if(daysFromStart>30 && daysFromStart<57) {
+	    	  int temp=-30;
+	    	  return temp+daysFromStart;
+	    	}
+	      
+	    	  
 	    }
 
 	    // ritorna il mese di questa data tra 1 e 12
