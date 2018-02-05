@@ -11,11 +11,14 @@ public enum Partito {
 	public final static int NUMERO_PARTITI = elementi().length;
 	
 	public static Partito[] elementi() { 
-		return values(); 
+		return values();
 	}
 	
 	public int indice() { 
-		for (int pos = 0; pos < NUMERO_PARTITI; pos++) if (elementi()[pos] == this) return pos;
+		for (int pos = 0; pos < NUMERO_PARTITI; pos++) 
+			if (elementi()[pos] == this) 
+				return pos;
+		
 		throw new RuntimeException("impossibile");
 	}
 	
