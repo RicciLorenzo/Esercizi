@@ -12,6 +12,6 @@ public class VotiPerPartito {
 	@Override
 	public String toString() { 
 		return partito + ": " + voti; 
-	}lol
+	}
 	
 }
