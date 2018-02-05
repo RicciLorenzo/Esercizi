@@ -6,7 +6,8 @@ public class VotiPerPartito {
 	private final int voti;
 	
 	public VotiPerPartito(Partito partito, int voti) { 
-		this.partito = partito; this.voti = voti;
+		this.partito = partito; 
+		this.voti = voti;
 	}
 	
 	@Override
