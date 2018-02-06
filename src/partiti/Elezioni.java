@@ -55,7 +55,7 @@ public class Elezioni implements Iterator<VotiPerPartito> {
 	}
 	
 	private class ElezioniIterator implements Iterator<VotiPerPartito> {
-		
+
 		int cursor=0;
 		
 		@Override
@@ -64,18 +64,12 @@ public class Elezioni implements Iterator<VotiPerPartito> {
 				return true;
 			
 			return false;
-			
 		}
-		
+	
 		@Override
 		public VotiPerPartito next() {
-			
-			
-			
+			Partito prossimoPartito = Partito.elementi()[cursor++];
+			return new VotiPerPartito(prossimoPartito, elezioni.get(prossimoPartito));
 		}
-		
-		
-		
 	}
-
 }

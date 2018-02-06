@@ -2,16 +2,11 @@ package partiti;
 
 import java.util.HashMap;
 
-public class ElezioniIstogramma { 
+public class ElezioniIstogramma extends Elezioni { 
 	//...
 	
 	HashMap<Partito, Integer> elezioni = new HashMap<>();
 	
-	public void vota(Partito partito) { 
-		//...registra un altro voto per il partito indicato 
-		int temp = elezioni.get(partito);
-		elezioni.put(partito, temp++);
-	}
 	
 	@Override 
 	public String toString() { 
@@ -42,19 +37,4 @@ public class ElezioniIstogramma {
 		return result;
 		
 	}
-	
-	protected final int numeroVotiEspressi() { 
-		//...restituisce il numero totale di voti registrati 
-		int tot=0;
-		for(int voti : elezioni.values()) {
-			tot+=voti;
-		}
-		return tot;
-	}
-	
-	protected final int votiPer(Partito partito) {
-		//...restituisce il numero totale di voti registrati per il partito indicato 
-		return elezioni.get(partito);
-	}
-
 }
