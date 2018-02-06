@@ -1,5 +1,7 @@
 package orario;
 
+import java.util.Calendar;
+
 public class ControllerImpl implements Controller { 
 	
 	private final Model model; // dove effettuare le modifiche
@@ -13,8 +15,8 @@ public class ControllerImpl implements Controller {
 	public void onIncreaseHours() {
 		if(model.getHours()==23)
 			model.set(0, model.getMinutes(), model.getSeconds());
-		
-		model.set(model.getHours()+1, model.getMinutes(), model.getSeconds());
+		else
+			model.set(model.getHours()+1, model.getMinutes(), model.getSeconds());
 		
 	}
 	
@@ -23,8 +25,8 @@ public class ControllerImpl implements Controller {
 		
 		if(model.getHours()==0)
 			model.set(model.getHours()+23, model.getMinutes(), model.getSeconds());
-		
-		model.set(model.getHours()-1, model.getMinutes(), model.getSeconds());
+		else
+			model.set(model.getHours()-1, model.getMinutes(), model.getSeconds());
 		
 	}
 
@@ -35,8 +37,8 @@ public class ControllerImpl implements Controller {
 			if(model.getHours()==23)
 				model.set(model.getHours()+1, 00, model.getSeconds());
 		}
-		
-		model.set(model.getHours(), model.getMinutes(), model.getSeconds());
+		else
+			model.set(model.getHours(), model.getMinutes(), model.getSeconds());
 			
 		
 	}
@@ -48,8 +50,8 @@ public class ControllerImpl implements Controller {
 			if(model.getHours()==0)
 				model.set(23, 59, model.getSeconds());
 		}
-		
-		model.set(model.getHours(), model.getMinutes(), model.getSeconds());
+		else
+			model.set(model.getHours(), model.getMinutes(), model.getSeconds());
 		
 	}
 
@@ -64,8 +66,8 @@ public class ControllerImpl implements Controller {
 			}
 			model.set(model.getHours(), model.getMinutes()+1, 0);
 		}
-		
-		model.set(model.getHours(), model.getMinutes(), model.getSeconds()+1);
+		else
+			model.set(model.getHours(), model.getMinutes(), model.getSeconds()+1);
 		
 	}
 
@@ -80,8 +82,8 @@ public class ControllerImpl implements Controller {
 			}
 			model.set(model.getHours(), model.getMinutes()-1, 59);
 		}
-		
-		model.set(model.getHours(), model.getMinutes(), model.getSeconds()-1);
+		else
+			model.set(model.getHours(), model.getMinutes(), model.getSeconds()-1);
 		
 	}
 	
