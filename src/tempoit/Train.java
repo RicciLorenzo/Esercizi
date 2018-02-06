@@ -25,6 +25,15 @@ public class Train implements Comparable<Train> {
 			return 1;
 		if(this.time.compareTo(other.time)<0)
 			return -1;
+		if(this.time.compareTo(other.time)==0) {
+			if(this.number>other.number)
+				return 1;
+			if(this.number<other.number)
+				return -1;
+			if(this.number==other.number)
+				return 0;
+		}
+			
 		
 		return 0;
 	}
