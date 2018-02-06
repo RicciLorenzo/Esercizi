@@ -35,10 +35,12 @@ public class ControllerImpl implements Controller {
 		
 		if(model.getMinutes()==59) {
 			if(model.getHours()==23)
-				model.set(model.getHours()+1, 00, model.getSeconds());
+				model.set(0, 00, model.getSeconds());
+			else
+				model.set(model.getHours()+1, 0, model.getSeconds());
 		}
 		else
-			model.set(model.getHours(), model.getMinutes(), model.getSeconds());
+			model.set(model.getHours(), model.getMinutes()+1, model.getSeconds());
 			
 		
 	}
@@ -49,9 +51,11 @@ public class ControllerImpl implements Controller {
 		if(model.getMinutes()==0) {
 			if(model.getHours()==0)
 				model.set(23, 59, model.getSeconds());
+			else
+				model.set(model.getHours()-1, 59, model.getSeconds());
 		}
 		else
-			model.set(model.getHours(), model.getMinutes(), model.getSeconds());
+			model.set(model.getHours(), model.getMinutes()-1, model.getSeconds());
 		
 	}
 
@@ -62,9 +66,11 @@ public class ControllerImpl implements Controller {
 			if(model.getMinutes()==59) {
 				if(model.getHours()==23)
 					model.set(0, 0, 0);
-				model.set(model.getHours()+1, 0, 0);
+				else
+					model.set(model.getHours()+1, 0, 0);
 			}
-			model.set(model.getHours(), model.getMinutes()+1, 0);
+			else
+				model.set(model.getHours(), model.getMinutes()+1, 0);
 		}
 		else
 			model.set(model.getHours(), model.getMinutes(), model.getSeconds()+1);
@@ -78,9 +84,11 @@ public class ControllerImpl implements Controller {
 			if(model.getMinutes()==0) {
 				if(model.getHours()==0)
 					model.set(23, 59, 59);
-				model.set(model.getHours()-1, 59, 59);
+				else
+					model.set(model.getHours()-1, 59, 59);
 			}
-			model.set(model.getHours(), model.getMinutes()-1, 59);
+			else
+				model.set(model.getHours(), model.getMinutes()-1, 59);
 		}
 		else
 			model.set(model.getHours(), model.getMinutes(), model.getSeconds()-1);
