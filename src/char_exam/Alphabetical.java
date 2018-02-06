@@ -3,7 +3,6 @@ package char_exam;
 public class Alphabetical extends AbstractCharSequence { 
 	char start;
 	int length;
-	String result="";
 	
 	public Alphabetical(char start, int length) {
 		
@@ -16,14 +15,7 @@ public class Alphabetical extends AbstractCharSequence {
 		
 		this.start=start;
 		this.length=length;
-		result+=start;
-		
-		for(int c=0;c<length;c++) {
-			if(result.charAt(c)=='z')
-				result+='a';
-			else
-				result+=(result.charAt(c)+1);
-		}
+
 		
 	}
 	
