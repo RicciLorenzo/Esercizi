@@ -1,7 +1,7 @@
 package tempoit;
 
 public class Time implements Comparable<Time> { 
-	//... 
+
 	int year;
 	int month;
 	int day;
@@ -9,7 +9,6 @@ public class Time implements Comparable<Time> {
 	int minutes;
 	
 	public Time(int year, int month, int day, int hours, int minutes) {
-		//... 
 		this.year=year;
 		this.month=month;
 		this.day=day;
@@ -19,7 +18,7 @@ public class Time implements Comparable<Time> {
 	
 	@Override 
 	public int compareTo(Time other) {
-		//... 
+
 		if(this.year>other.year)
 			return 1;
 		
