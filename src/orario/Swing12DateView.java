@@ -68,15 +68,19 @@ public class Swing12DateView extends JFrame implements View {
 
 	@Override
 	public void onTimeChanged(int hours, int minutes, int seconds) {
+		
+		String ampm="AM";
+		if(hours>12&&hours<=23) {
+			hours=hours-12;
+			ampm="PM";
+		}
 		if(hours==0)
 			hours=12;
-		else
-			hours-=12;
 		String a=String.valueOf(hours);
-		//String b=String.valueOf(minutes);
+		
 		
 		this.hours.setText(a);
 		this.minutes.setText(String.format("%02d", minutes));
-		this.seconds.setText(String.format("%02d", seconds));
+		this.seconds.setText(String.format("%02d", seconds)+"\t"+ampm);
 	}
 }
